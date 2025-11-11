@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".ui.MainScreenFragment">
+
+    <Button
+        android:id="@+id/acquiring"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/acquiring"
+        app:layout_constraintBottom_toTopOf="@id/acquiringOffice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/acquiringOffice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/acquiring_office"
+        app:layout_constraintBottom_toTopOf="@id/bookKeeping"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/acquiring" />
+
+    <Button
+        android:id="@+id/bookKeeping"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/bookkeeping"
+        app:layout_constraintBottom_toTopOf="@id/currencyOperations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/acquiringOffice" />
+
+    <Button
+        android:id="@+id/currencyOperations"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/currency_operations"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bookKeeping" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

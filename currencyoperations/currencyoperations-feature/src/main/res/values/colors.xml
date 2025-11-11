@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_buy">#4CAF50</color>
+    <color name="color_sell">#F44336</color>
+    <color name="color_convert">#FF9800</color>
+
+    <color name="color_pending">#FF9800</color>
+    <color name="color_completed">#4CAF50</color>
+    <color name="color_failed">#F44336</color>
+</resources>

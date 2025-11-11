@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/ivTerminalStatus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_online" />
+
+        <TextView
+            android:id="@+id/tvTerminalId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/tvSerialNumber"
+            app:layout_constraintStart_toEndOf="@id/ivTerminalStatus"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Терминал T001" />
+
+        <TextView
+            android:id="@+id/tvSerialNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="SN123456789" />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/tvTerminalId"
+            app:layout_constraintStart_toStartOf="@id/tvTerminalId"
+            app:layout_constraintTop_toBottomOf="@id/tvTerminalId"
+            tools:text="Магазин №5, ул. Ленина, 10" />
+
+        <TextView
+            android:id="@+id/tvLastActivity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="?colorControlNormal"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/tvLocation"
+            app:layout_constraintStart_toStartOf="@id/tvLocation"
+            app:layout_constraintTop_toBottomOf="@id/tvLocation"
+            tools:text="Последнее действие: 05.11.2025 16:20" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

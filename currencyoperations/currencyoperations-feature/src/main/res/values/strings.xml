@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_operation">Создать</string>
+    <string name="empty_field_error">Заполните поле</string>
+    <string name="from_currency_hint">Из валюты</string>
+    <string name="to_currency_hint">В валюту</string>
+    <string name="amount_hint">Сумма</string>
+    <string name="rate_hint">Курс</string>
+</resources>

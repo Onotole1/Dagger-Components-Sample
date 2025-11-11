@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="acquiring">Эквайринг</string>
+    <string name="acquiring_office">Торговый эквайринг</string>
+    <string name="bookkeeping">Бухгалтерия</string>
+    <string name="currency_operations">Валютные операции</string>
+</resources>

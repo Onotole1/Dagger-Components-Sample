@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".ui.OperationsListFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilFromCurrency"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/from_currency_hint"
+        app:layout_constraintBottom_toTopOf="@id/tilToCurrency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietFromCurrency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilToCurrency"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/to_currency_hint"
+        app:layout_constraintBottom_toTopOf="@id/tilAmountFrom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilFromCurrency">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietToCurrency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilAmountFrom"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/amount_hint"
+        app:layout_constraintBottom_toTopOf="@id/tilRate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilToCurrency">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietAmountFrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789."
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilRate"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/rate_hint"
+        app:layout_constraintBottom_toTopOf="@id/createOperation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilAmountFrom">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tietRate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="0123456789."
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/createOperation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/create_operation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:elevation="2dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/createOperation"
+        app:layout_constraintEnd_toEndOf="@id/createOperation"
+        app:layout_constraintStart_toStartOf="@id/createOperation"
+        app:layout_constraintTop_toTopOf="@id/createOperation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

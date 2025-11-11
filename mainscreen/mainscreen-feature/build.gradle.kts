@@ -1,0 +1,58 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.ksp)
+}
+
+android {
+    namespace = "ru.psbank.mainscreen"
+    compileSdk {
+        version = release(36)
+    }
+
+    defaultConfig {
+        minSdk = 24
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlin {
+        jvmToolchain(11)
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.dagger)
+    implementation(libs.dagger.android)
+    api(project("${parent?.path}:mainscreen-core"))
+    implementation(project("${parent?.parent?.path}:bookkeeping:bookkeeping-core"))
+    implementation(project("${parent?.parent?.path}:currencyoperations:currencyoperations-core"))
+    implementation(project("${parent?.parent?.path}:acquiring:acquiring-core"))
+    implementation(project("${parent?.parent?.path}:acquiringoffice:acquiringoffice-core"))
+    ksp(libs.dagger.compiler)
+    ksp(libs.dagger.android.processor)
+}
