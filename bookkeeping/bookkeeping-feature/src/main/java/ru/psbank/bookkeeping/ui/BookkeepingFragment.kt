@@ -4,19 +4,20 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.viewModelFactory
-import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.psbank.bookkeeping.R
 import ru.psbank.bookkeeping.databinding.FragmentBookkeepingBinding
+import ru.psbank.bookkeeping.di.DaggerBookkeepingFragmentComponent
 import javax.inject.Inject
 import javax.inject.Provider
 
-internal class BookkeepingFragment : DaggerFragment(R.layout.fragment_bookkeeping) {
+internal class BookkeepingFragment : Fragment(R.layout.fragment_bookkeeping) {
 
     companion object {
         fun newInstance() = BookkeepingFragment()
@@ -31,6 +32,11 @@ internal class BookkeepingFragment : DaggerFragment(R.layout.fragment_bookkeepin
                 viewModelProvider.get()
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        DaggerBookkeepingFragmentComponent.create().inject(this)
+        super.onCreate(savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

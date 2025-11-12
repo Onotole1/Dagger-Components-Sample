@@ -47,10 +47,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.dagger)
-    implementation(libs.dagger.android)
     api(project("${parent?.path}:currencyoperations-core"))
     api(project("${parent?.parent?.path}:mainscreen:mainscreen-core"))
     api(project("${parent?.parent?.path}:utils"))
     ksp(libs.dagger.compiler)
-    ksp(libs.dagger.android.processor)
 }

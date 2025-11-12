@@ -4,19 +4,20 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.viewModelFactory
-import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.psbank.acquiringoffice.R
 import ru.psbank.acquiringoffice.databinding.FragmentTerminalBinding
+import ru.psbank.acquiringoffice.di.DaggerTerminalFragmentComponent
 import javax.inject.Inject
 import javax.inject.Provider
 
-internal class TerminalFragment : DaggerFragment(R.layout.fragment_terminal) {
+internal class TerminalFragment : Fragment(R.layout.fragment_terminal) {
 
     companion object {
         fun newInstance() = TerminalFragment()
@@ -33,6 +34,12 @@ internal class TerminalFragment : DaggerFragment(R.layout.fragment_terminal) {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        DaggerTerminalFragmentComponent.create()
+            .inject(this)
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = FragmentTerminalBinding.bind(view)
         val adapter = TerminalAdapter()
@@ -46,11 +53,13 @@ internal class TerminalFragment : DaggerFragment(R.layout.fragment_terminal) {
                         binding.errorGroup.isVisible = true
                         adapter.submitList(emptyList())
                     }
+
                     TerminalViewState.Loading -> {
                         binding.progress.isVisible = true
                         binding.errorGroup.isGone = true
                         adapter.submitList(emptyList())
                     }
+
                     is TerminalViewState.Success -> {
                         binding.progress.isGone = true
                         binding.errorGroup.isGone = true

@@ -47,6 +47,5 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.dagger)
-    implementation(libs.dagger.android)
     ksp(libs.dagger.compiler)
 }

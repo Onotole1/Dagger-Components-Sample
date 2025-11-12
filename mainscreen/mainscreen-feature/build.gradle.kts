@@ -47,12 +47,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.dagger)
-    implementation(libs.dagger.android)
     api(project("${parent?.path}:mainscreen-core"))
     implementation(project("${parent?.parent?.path}:bookkeeping:bookkeeping-core"))
     implementation(project("${parent?.parent?.path}:currencyoperations:currencyoperations-core"))
     implementation(project("${parent?.parent?.path}:acquiring:acquiring-core"))
     implementation(project("${parent?.parent?.path}:acquiringoffice:acquiringoffice-core"))
+    implementation(project("${parent?.parent?.path}:utils"))
     ksp(libs.dagger.compiler)
-    ksp(libs.dagger.android.processor)
 }

@@ -47,8 +47,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.dagger)
-    implementation(libs.dagger.android)
     api(project("${parent?.path}:acquiringoffice-core"))
     ksp(libs.dagger.compiler)
-    ksp(libs.dagger.android.processor)
 }

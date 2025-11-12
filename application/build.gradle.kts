@@ -47,7 +47,6 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.dagger)
-    implementation(libs.dagger.android)
     implementation(project(":acquiring:acquiring-feature"))
     implementation(project(":mainscreen:mainscreen-feature"))
     implementation(project(":bookkeeping:bookkeeping-feature"))
@@ -55,5 +54,4 @@ dependencies {
     implementation(project(":currencyoperations:currencyoperations-feature"))
     implementation(project(":utils"))
     ksp(libs.dagger.compiler)
-    ksp(libs.dagger.android.processor)
 }

@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import ru.psbank.currencyoperations.di.CreateOperationFragmentDependencies
 import ru.psbank.currencyoperations.di.OperationsListFragmentDependencies
+import ru.psbank.mainscreen.di.MainScreenFragmentDependencies
 import ru.psbank.utls.ComponentDependencies
 import ru.psbank.utls.ComponentDependenciesKey
 
@@ -22,4 +23,9 @@ internal interface ApplicationComponentDependenciesModule {
     @IntoMap
     @ComponentDependenciesKey(OperationsListFragmentDependencies::class)
     fun bindOperationsListFragmentDependencies(impl: ApplicationComponent): ComponentDependencies
+
+    @Binds
+    @IntoMap
+    @ComponentDependenciesKey(MainScreenFragmentDependencies::class)
+    fun bindMainScreenFragmentDependencies(impl: ApplicationComponent): ComponentDependencies
 }
