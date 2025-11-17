@@ -2,6 +2,7 @@ package ru.psbank.acquiring.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,6 +17,7 @@ internal sealed interface AcquiringViewState {
     object Error : AcquiringViewState
 }
 
+@HiltViewModel
 internal class AcquiringViewModel @Inject constructor(
     private val interactor: AcquiringInteractor,
 ) : ViewModel() {

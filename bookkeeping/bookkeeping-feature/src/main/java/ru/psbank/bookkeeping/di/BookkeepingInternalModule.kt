@@ -2,16 +2,14 @@ package ru.psbank.bookkeeping.di
 
 import dagger.Binds
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import ru.psbank.bookkeeping.BookkeepingStarterImpl
 import ru.psbank.bookkeeping.core.BookkeepingStarter
-import ru.psbank.bookkeeping.ui.BookkeepingFragment
 
+@InstallIn(SingletonComponent::class)
 @Module
 internal interface BookkeepingInternalModule {
     @Binds
     fun bindBookkeepingStarter(impl: BookkeepingStarterImpl): BookkeepingStarter
-
-    @ContributesAndroidInjector(modules = [BookkeepingFragmentModule::class])
-    fun contributeBookkeepingFragment(): BookkeepingFragment
 }

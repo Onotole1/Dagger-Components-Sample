@@ -2,6 +2,7 @@ package ru.psbank.bookkeeping.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,6 +17,7 @@ internal sealed interface BookkeepingViewState {
     object Error : BookkeepingViewState
 }
 
+@HiltViewModel
 internal class BookkeepingViewModel @Inject constructor(
     private val interactor: BookkeepingInteractor,
 ) : ViewModel() {

@@ -2,6 +2,7 @@ package ru.psbank.currencyoperations.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,6 +22,7 @@ sealed interface OperationCreationViewState {
     data class Error(val errorMessage: String) : OperationCreationViewState
 }
 
+@HiltViewModel
 internal class OperationCreationViewModel @Inject constructor(
     private val interactor: CurrencyOperationInteractor
 ) : ViewModel() {

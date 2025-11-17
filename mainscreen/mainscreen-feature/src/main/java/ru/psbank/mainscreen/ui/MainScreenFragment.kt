@@ -2,8 +2,9 @@ package ru.psbank.mainscreen.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import dagger.android.support.DaggerFragment
+import dagger.hilt.android.AndroidEntryPoint
 import ru.psbank.acquiring.core.AcquiringStarter
 import ru.psbank.acquiringoffice.core.AcquiringOfficeStarter
 import ru.psbank.acquiringoffice.core.CurrencyOperationsStarter
@@ -13,11 +14,8 @@ import ru.psbank.mainscreen.core.R as mainscreencoreR
 import ru.psbank.mainscreen.databinding.FragmentMainscreenBinding
 import javax.inject.Inject
 
-internal class MainScreenFragment : DaggerFragment(R.layout.fragment_mainscreen) {
-
-    companion object {
-        fun newInstance() = MainScreenFragment()
-    }
+@AndroidEntryPoint
+internal class MainScreenFragment : Fragment(R.layout.fragment_mainscreen) {
 
     @Inject
     lateinit var acquiringOfficeStarter: AcquiringOfficeStarter

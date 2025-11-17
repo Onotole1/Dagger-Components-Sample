@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -46,9 +47,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.dagger)
-    implementation(libs.dagger.android)
+    implementation(libs.dagger.hilt)
     api(project("${parent?.path}:acquiringoffice-core"))
-    ksp(libs.dagger.compiler)
-    ksp(libs.dagger.android.processor)
+    ksp(libs.hilt.compiler)
 }

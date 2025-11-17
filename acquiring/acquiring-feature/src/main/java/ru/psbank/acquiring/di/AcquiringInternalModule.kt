@@ -2,16 +2,14 @@ package ru.psbank.acquiring.di
 
 import dagger.Binds
 import dagger.Module
-import dagger.android.ContributesAndroidInjector
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import ru.psbank.acquiring.AcquiringStarterImpl
 import ru.psbank.acquiring.core.AcquiringStarter
-import ru.psbank.acquiring.ui.AcquiringFragment
 
+@InstallIn(SingletonComponent::class)
 @Module
 internal interface AcquiringInternalModule {
     @Binds
     fun bindAcquiringStarter(impl: AcquiringStarterImpl): AcquiringStarter
-
-    @ContributesAndroidInjector(modules = [AcquiringFragmentModule::class])
-    fun contributeAcquiringFragment(): AcquiringFragment
 }

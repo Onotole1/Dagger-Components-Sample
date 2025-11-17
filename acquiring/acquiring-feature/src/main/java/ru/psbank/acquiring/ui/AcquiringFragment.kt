@@ -1,37 +1,27 @@
 package ru.psbank.acquiring.ui
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewmodel.viewModelFactory
-import dagger.android.support.DaggerFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.psbank.acquiring.R
 import ru.psbank.acquiring.databinding.FragmentAcquiringBinding
-import javax.inject.Inject
-import javax.inject.Provider
 
-internal class AcquiringFragment : DaggerFragment(R.layout.fragment_acquiring) {
+@AndroidEntryPoint
+internal class AcquiringFragment : Fragment(R.layout.fragment_acquiring) {
 
     companion object {
         fun newInstance() = AcquiringFragment()
     }
 
-    @Inject
-    lateinit var viewModelProvider: Provider<AcquiringViewModel>
-
-    private val viewModel: AcquiringViewModel by viewModels {
-        viewModelFactory {
-            addInitializer(AcquiringViewModel::class) {
-                viewModelProvider.get()
-            }
-        }
-    }
+    private val viewModel: AcquiringViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = FragmentAcquiringBinding.bind(view)

@@ -6,34 +6,22 @@ import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewmodel.viewModelFactory
-import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.psbank.currencyoperations.R
 import ru.psbank.currencyoperations.databinding.FragmentCreateOperationBinding
 import ru.psbank.currencyoperations.ui.OperationCreationViewModel.FieldError
-import javax.inject.Inject
-import javax.inject.Provider
 
-internal class CreateOperationFragment : DaggerFragment(R.layout.fragment_create_operation) {
+internal class CreateOperationFragment : Fragment(R.layout.fragment_create_operation) {
     companion object {
         fun newInstance() = CreateOperationFragment()
     }
 
-    @Inject
-    lateinit var viewModelProvider: Provider<OperationCreationViewModel>
-
-    private val viewModel: OperationCreationViewModel by viewModels {
-        viewModelFactory {
-            addInitializer(OperationCreationViewModel::class) {
-                viewModelProvider.get()
-            }
-        }
-    }
+    private val viewModel: OperationCreationViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = FragmentCreateOperationBinding.bind(view)

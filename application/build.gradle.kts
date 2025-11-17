@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -46,13 +47,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.dagger)
-    implementation(libs.dagger.android)
+    implementation(libs.dagger.hilt)
     implementation(project(":acquiring:acquiring-feature"))
     implementation(project(":mainscreen:mainscreen-feature"))
     implementation(project(":bookkeeping:bookkeeping-feature"))
     implementation(project(":acquiringoffice:acquiringoffice-feature"))
     implementation(project(":currencyoperations:currencyoperations-feature"))
-    ksp(libs.dagger.compiler)
-    ksp(libs.dagger.android.processor)
+    ksp(libs.hilt.compiler)
 }
