@@ -6,20 +6,22 @@ import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.viewModelFactory
-import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.psbank.currencyoperations.R
 import ru.psbank.currencyoperations.databinding.FragmentCreateOperationBinding
+import ru.psbank.currencyoperations.di.DaggerCreateOperationFragmentComponent
 import ru.psbank.currencyoperations.ui.OperationCreationViewModel.FieldError
+import ru.psbank.utls.findComponentDependencies
 import javax.inject.Inject
 import javax.inject.Provider
 
-internal class CreateOperationFragment : DaggerFragment(R.layout.fragment_create_operation) {
+internal class CreateOperationFragment : Fragment(R.layout.fragment_create_operation) {
     companion object {
         fun newInstance() = CreateOperationFragment()
     }
@@ -33,6 +35,14 @@ internal class CreateOperationFragment : DaggerFragment(R.layout.fragment_create
                 viewModelProvider.get()
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        DaggerCreateOperationFragmentComponent.builder()
+            .createOperationFragmentDependencies(findComponentDependencies())
+            .build()
+            .inject(this)
+        super.onCreate(savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

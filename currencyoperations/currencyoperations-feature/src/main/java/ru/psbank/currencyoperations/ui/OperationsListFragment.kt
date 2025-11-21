@@ -4,21 +4,23 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.viewModelFactory
-import dagger.android.support.DaggerFragment
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ru.psbank.currencyoperations.R
 import ru.psbank.currencyoperations.databinding.FragmentOperationsListBinding
+import ru.psbank.currencyoperations.di.DaggerOperationsListFragmentComponent
+import ru.psbank.utls.findComponentDependencies
 import javax.inject.Inject
 import javax.inject.Provider
 import ru.psbank.mainscreen.core.R as mainscreencoreR
 
-internal class OperationsListFragment : DaggerFragment(R.layout.fragment_operations_list) {
+internal class OperationsListFragment : Fragment(R.layout.fragment_operations_list) {
 
     companion object {
         fun newInstance() = OperationsListFragment()
@@ -33,6 +35,14 @@ internal class OperationsListFragment : DaggerFragment(R.layout.fragment_operati
                 viewModelProvider.get()
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        DaggerOperationsListFragmentComponent.builder()
+            .operationsListFragmentDependencies(findComponentDependencies())
+            .build()
+            .inject(this)
+        super.onCreate(savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

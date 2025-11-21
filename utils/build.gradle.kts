@@ -1,21 +1,20 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.ksp)
 }
 
 android {
-    namespace = "ru.psbank.modules"
+    namespace = "ru.psbank.utils"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "ru.psbank.modules"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -44,16 +43,9 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.dagger)
-    implementation(libs.dagger.android)
-    implementation(project(":acquiring:acquiring-feature"))
-    implementation(project(":mainscreen:mainscreen-feature"))
-    implementation(project(":bookkeeping:bookkeeping-feature"))
-    implementation(project(":acquiringoffice:acquiringoffice-feature"))
-    implementation(project(":currencyoperations:currencyoperations-feature"))
-    implementation(project(":utils"))
     ksp(libs.dagger.compiler)
-    ksp(libs.dagger.android.processor)
 }

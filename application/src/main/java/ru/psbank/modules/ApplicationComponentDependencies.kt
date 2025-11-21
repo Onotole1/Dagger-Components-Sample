@@ -1,0 +1,7 @@
+package ru.psbank.modules
+
+import ru.psbank.currencyoperations.di.CreateOperationFragmentDependencies
+import ru.psbank.currencyoperations.di.OperationsListFragmentDependencies
+
+internal interface ApplicationComponentDependencies : OperationsListFragmentDependencies,
+    CreateOperationFragmentDependencies

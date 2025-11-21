@@ -18,8 +18,9 @@ import javax.inject.Singleton
         AcquiringOfficeModule::class,
         CurrencyOperationsModule::class,
         AndroidInjectionModule::class,
+        ApplicationComponentDependenciesModule::class,
     ]
 )
-interface ApplicationComponent {
+internal interface ApplicationComponent: ApplicationComponentDependencies {
     fun inject(app: App)
 }
